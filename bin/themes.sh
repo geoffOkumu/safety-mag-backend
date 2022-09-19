@@ -1,6 +1,7 @@
 themes=(
 	casper
 	lyra
+	custom-theme
 )
 
 mkdir -p content/themes/
