@@ -1,0 +1,56 @@
+{{!< default}}
+
+{{> "home/featured"}}
+{{> "home/hero"}}
+{{> "home/columns"}}
+{{> "home/safety-inteligence"}}
+{{> "home/post-list"}}
+{{> "home/videos"}}
+{{> "home/writers-cta"}}
+{{> "home/quicklinks"}}
+
+<script src="https://cdn.jsdelivr.net/npm/keen-slider@6.7.0/keen-slider.min.js"></script>
+<script>
+    var slider = new KeenSlider("#featured-slider", {
+            loop: true,
+            slides: {
+                perView: 1,
+            },
+            breakpoints: {
+                "(min-width: 400px)": {
+                    slides: { perView: 2, spacing: 8 },
+                },
+                "(min-width: 1000px)": {
+                    slides: { perView: 3, spacing: 14 },
+                },
+            },
+        },
+        [
+          (slider) => {
+            
+            slider.on("created", () => {
+                var arrowLeft = document.getElementById('featured-btn-prev')
+                arrowLeft.addEventListener("click", () => slider.prev())
+                var arrowRight = document.getElementById('featured-btn-next')
+                arrowRight.addEventListener("click", () => slider.next())
+            })
+          },
+        ])
+
+    var columnsSlider = new KeenSlider("#columns-slider", {
+            slides: {
+                perView: 2.2,
+            },
+            breakpoints: {
+                "(min-width: 400px)": {
+                    slides: { perView: 4.5, spacing: 8 },
+                },
+                "(min-width: 1000px)": {
+                    slides: { perView: 6.5, spacing: 14 },
+                },
+            },
+        })
+    
+</script>
+
+

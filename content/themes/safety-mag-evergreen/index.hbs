@@ -1,0 +1,23 @@
+{{!< default}}
+
+<section class="py-8 bg-gray-200 mb-4">
+    <div class="container">
+        <h2 class="text-4xl font-serif">All Posts</h2>
+    </div>
+</section>
+<div class="container flex flex-wrap justify-between">
+
+    <div class="w-full md:w-[72%]">
+    {{#foreach posts}}
+
+        {{> "card"}} {{!-- partials/card.hbs --}}
+
+    {{/foreach}}
+    </div>
+    <div class="w-full md:w-[25%]">
+        {{> "home/subscribe"}}
+        {{> "home/social-links"}}
+    </div>
+
+</div>
+

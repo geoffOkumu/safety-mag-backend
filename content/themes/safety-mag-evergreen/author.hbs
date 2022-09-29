@@ -1,0 +1,55 @@
+{{!< default}}
+
+{{#author}}
+    <section class="py-3 bg-green-600 text-white">
+        <div class="container text-sm">
+            <a href="/" class="hover:underline">Home</a>
+            <span class="mx-3">/</span>
+            <a href="/" class="hover:underline">Columns</a> 
+            <span class="mx-3">/</span> 
+            <span>{{name}}</span>
+        </div>
+    </section>
+{{/author}}
+<div class="gh-page">
+    <div class="gh-container">
+
+        {{#author}}
+        <header class="py-8 bg-gray-200">
+            <div class="container text-center">
+                {{#if profile_image}}
+                    <img class="w-20 h-20 rounded-full object-cover mb-6 inline-block" src="{{profile_image}}" alt="{{name}}" />
+                {{/if}}
+
+                <h1 class="text-4xl mb-4">{{name}}</h1>
+                {{#if bio}}
+                    <p class="mx-auto max-w-[720px]">{{bio}}</p>
+                {{/if}}
+
+                <div class="gh-author-meta">
+                    <div class="gh-author-links">
+                        {{#if website}}
+                            <a href="{{website}}" target="_blank" rel="noopener">Website</a>
+                        {{/if}}
+                        {{#if twitter}}
+                            <a href="{{twitter_url}}" target="_blank" rel="noopener">Twitter</a>
+                        {{/if}}
+                        {{#if facebook}}
+                            <a href="{{facebook_url}}" target="_blank" rel="noopener">Facebook</a>
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+        </header>
+        {{/author}}
+
+        <div class="container my-8">
+        {{#foreach posts}}
+
+            {{> "card"}} {{!-- partials/card.hbs --}}
+
+        {{/foreach}}
+        </div>
+
+    </div>
+</div>

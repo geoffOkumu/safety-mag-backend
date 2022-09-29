@@ -1,0 +1,64 @@
+<section class="bg-gray-200 py-10">
+    <div class="container flex flex-wrap justify-between">
+        <div class="w-full md:w-[72%]">
+            <div class="w-full flex justify-between mb-4">
+                <h3 class="text-sm text-black/70 uppercase">Videos and Interviews</h3>
+                <a href="/videos" class="flex items-center">
+                    <span class="text-sm text-black/70 uppercase inline-block mr-2">View All</span>
+                    {{> "icons/arrow-right" className="h-3 w-auto"}}
+                </a>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {{#get "posts" include="tags,authors" filter="tags:hash-video"  limit="4"}}
+                    {{#foreach posts}}
+
+                        <a href="{{url}}" class="{{#if @first}}md:col-span-3{{/if}} relative block w-full rounded">
+                            {{#if feature_image}}
+                                <img class="w-full {{#if @first}}h-[400px]{{else}}h-[160px]{{/if}} object-cover block rounded"
+                                    srcset="{{img_url feature_image size="s"}} 300w,
+                                            {{img_url feature_image size="m"}} 600w,
+                                            {{img_url feature_image size="l"}} 1000w,
+                                            {{img_url feature_image size="xl"}} 2000w"
+                                    sizes="(max-width: 1000px) 400px, 700px"
+                                    src="{{img_url feature_image size="m"}}"
+                                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                                />
+                            {{/if}}
+                            <div class="absolute rounded top-0 left-0 right-0 bottom-0 bg-black/40 hover:bg-black/20 text-white p-4 flex flex-wrap items-end">
+                                <div>
+                                    <div class="py-2 px-4 bg-green-600 mb-1 rounded inline-block">
+                                        {{> "icons/play"}}
+                                    </div>
+                                    <h3 class="{{#if @first}}text-3xl{{else}}text-base{{/if}} block font-bold w-full">{{title}}</h3>
+                                    {{#if @first}}
+                                        <div class="flex items-center text-sm mt-2">
+                                            {{#if primary_author.profile_image}}
+                                                <img
+                                                    class="rounded-full h-8 w-8 object-cover block mr-3"
+                                                    src={{img_url primary_author.profile_image size="xs"}}
+                                                    alt="{{primary_author.name}}"
+                                                />
+                                                {{else}}
+                                                <img
+                                                    class="p-2 rounded bg-gray-100 h-8 block mr-3"
+                                                    src={{asset "img/user.svg"}}
+                                                    alt="user"
+                                                />
+                                            {{/if}}
+                                            <span class="text-base">{{primary_author.name}}</span>
+                                        </div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </a>
+                        
+
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+        <div class="w-full md:w-[25%]"></div>
+    </div>
+</section>
+<div class="hidden h-[160px]"></div>
+<div class="hidden h-[400px]"></div>

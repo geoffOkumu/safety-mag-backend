@@ -1,0 +1,46 @@
+<div class="grid grid-cols-2 gap-2 text-white fill-white mt-8">
+    {{#if @site.facebook}}
+        <a 
+            class="px-4 py-3 bg-blue-700 flex items-center rounded hover:ring" 
+            href="{{facebook_url @site.facebook}}" 
+            title="Facebook" 
+            target="_blank" 
+            rel="noopener"
+        >
+            {{> "icons/facebook"}}
+            <span class="text-white text-base inline-block ml-3">Facebook</span>
+        </a>
+    {{/if}}
+    {{#if @site.twitter}}
+        <a 
+            class="px-4 py-3 bg-cyan-500 flex items-center rounded hover:ring" 
+            href="{{twitter_url @site.twitter}}" 
+            title="Twitter" 
+            target="_blank" 
+            rel="noopener"
+        >
+            {{> "icons/twitter"}}
+            <span class="text-white text-base inline-block ml-3">Twitter</span>
+        </a>
+    {{/if}}
+    <a 
+        class="px-4 py-3 bg-red-600 flex items-center rounded hover:ring" 
+        href="https://youtube.com" 
+        title="YouTube" 
+        target="_blank" 
+        rel="noopener"
+    >
+        {{> "icons/youtube"}}
+        <span class="text-white text-base inline-block ml-3">Youtube</span>
+    </a>
+    <a 
+        class="px-4 py-3 bg-purple-700 flex items-center rounded hover:ring" 
+        href="https://instagram.com" 
+        title="Instagram" 
+        target="_blank" 
+        rel="noopener"
+    >
+        {{> "icons/instagram"}}
+        <span class="text-white text-base inline-block ml-3">Instagram</span>
+    </a>
+</div>

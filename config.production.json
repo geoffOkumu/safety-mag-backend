@@ -1,0 +1,32 @@
+{
+  "logging": {
+    "level": "info",
+    "transports": [
+      "stdout"
+    ]
+  },
+  "mail": {
+    "transport": "SMTP",
+    "options": {
+      "service": "Mailgun",
+      "auth": {}
+    }
+  },
+  "fileStorage": false,
+  "storage": {},
+  "database": {
+    "client": "mysql",
+    "connection": {},
+    "pool": {
+      "min": 0,
+      "max": 5
+    },
+    "debug": false
+  },
+  "server": {
+    "host": "0.0.0.0"
+  },
+  "paths": {
+    "contentPath": "/workspace/safety-mag-backend/content/"
+  }
+}

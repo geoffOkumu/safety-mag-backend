@@ -1,0 +1,38 @@
+{{!< default}}
+
+{{#tag}}
+    <section class="bg-gray-200 py-3" {{#if accent_color}}style="background-color: {{accent_color}};color:#fff;"{{/if}}>
+        <div class="container text-sm">
+            <a href="/" class="hover:underline">Home</a> <span class="mx-3">/</span> <span>{{name}}</span>
+        </div>
+    </section>
+{{/tag}}
+<section class="w-full bg-gray-200 py-10">
+    {{#tag}}
+        <header class="container max-w-[720px] text-center">
+            <h1 class="text-4xl md:text-6xl font-sans font-bold mb-4">{{name}}</h1>
+            <p class="text-sm text-center max-w-[720px] text-black/80">
+                {{#if description}}
+                    {{description}}
+                {{else}}
+                    A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}}
+                {{/if}}
+            </p>
+        </header>
+    {{/tag}}
+</section>
+<div class="container flex flex-wrap justify-between my-8">
+    
+    <div class="w-full md:w-[72%]">
+        {{#foreach posts}}
+
+            {{> "card"}} {{!-- partials/card.hbs --}}
+
+        {{/foreach}}
+    </div>
+    <div class="w-full md:w-[25%]">
+        {{> "home/subscribe"}}
+        {{> "home/social-links"}}
+    </div>
+</div>
+

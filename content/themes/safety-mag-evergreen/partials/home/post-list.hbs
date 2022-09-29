@@ -1,0 +1,18 @@
+<section class="container flex flex-wrap justify-between my-8">
+    <div class="w-full">
+        <h3 class="text-sm text-black/70 uppercase block mb-6">Latest Articles</h3>
+    </div>
+    <div class="w-full md:w-[72%]">
+        {{#get "posts" include="tags,authors" filter="tags:-hash-video"  limit="5"}}
+            {{#foreach posts}}
+
+                {{> "card"}} {{!-- partials/card.hbs --}}
+
+            {{/foreach}}
+        {{/get}}
+    </div>
+    <div class="w-full md:w-[25%]">
+        {{> "home/subscribe"}}
+        {{> "home/social-links"}}
+    </div>
+</section>

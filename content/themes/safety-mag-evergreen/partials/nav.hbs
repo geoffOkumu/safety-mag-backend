@@ -1,0 +1,89 @@
+<header id="gh-head">
+    <div class="bg-green-600 h-10 w-full flex items-center">
+        <div class="container text-white fill-white flex justify-end">
+            <div class="flex items-center">
+                {{#if @site.facebook}}
+                <a href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
+                {{/if}}
+                {{#if @site.twitter}}
+                <a class="ml-4" href="{{twitter_url @site.twitter}}" title="Twitter" target="_blank" rel="noopener">{{> "icons/twitter"}}</a>
+                {{/if}}
+                <a class="ml-4" href="https://feedly.com/i/subscription/feed/{{@site.url}}/rss/" title="RSS" target="_blank" rel="noopener">{{> "icons/rss"}}</a>
+            </div>
+        </div>
+    </div>
+    <nav class="container h-[100px] w-full flex items-center">
+
+        <div class="flex md:block justify-between items-center w-full md:w-auto">
+            <a class="text-black" href="{{@site.url}}">
+                {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
+                {{else}}
+                    {{> "icons/logo"}}
+                {{/if}}
+            </a>
+            <a class="gh-burger" role="button">
+                <div class="gh-burger-box">
+                    <div class="gh-burger-inner"></div>
+                </div>
+            </a>
+        </div>
+        <ul id="nav-links" class="hidden md:flex items-center md:ml-8 font-medium list-none m-0 p-0">
+            <div class="relative group mr-4">
+                <a href="/tags" class="flex items-center hover:text-green-600">
+                    <span class="text-base uppercase inline-block mr-1">Categories</span>
+                    {{> "icons/chevron-down"}}
+                    
+                </a>
+                <div class="sm:h-0 sm:overflow-y-hidden sm:group-hover:h-auto group-hover:border group-hover:border-black/10 sm:absolute transition-[height] duration-500 bg-white w-full sm:w-[300px] z-[1000] rounded text-black sm:shadow-lg">
+                    {{#get "tags" include="count.posts" limit="all" as |topic|}}
+                        {{#foreach topic}}
+                            <a class="block py-2 px-2 text-sm hover:bg-gray-200 rounded m-2" href="{{url}}">{{name}}</a>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+            <div class="relative group mr-4">
+                <a href="/tags" class="flex items-center hover:text-green-600">
+                    <span class="text-base uppercase inline-block mr-1">Columns</span>
+                    {{> "icons/chevron-down"}}
+                    
+                </a>
+                <div class="sm:h-0 sm:overflow-y-hidden sm:group-hover:h-auto group-hover:border group-hover:border-black/10 sm:absolute bg-white w-full sm:w-[300px] z-[1000] rounded text-black sm:shadow-lg">
+                    {{#get "authors" limit="10"}}
+                        {{#foreach authors}}
+                            <a class="flex items-center py-2 px-2 text-sm hover:bg-gray-200 rounded m-2" href="/author/{{slug}}">
+                                {{#if profile_image}}
+                                    <img
+                                        class="rounded h-10 w-10 object-cover block mr-3"
+                                        src={{img_url profile_image size="xs"}}
+                                        alt="{{name}}"
+                                    />
+                                    {{else}}
+                                    <img
+                                        class="p-2 rounded bg-gray-100 h-8 block mr-3"
+                                        src={{asset "img/user.svg"}}
+                                        alt="user"
+                                    />
+                                {{/if}}
+                                <span>{{name}}</span>
+                            </a>
+                        {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+            {{navigation}}
+        </ul>
+        <div class="hidden md:block grow"></div>
+        <a class="hidden md:inline-block" href="#/portal/signup">
+            <button class="h-10 px-6 font-semibold rounded-md bg-slate-800 text-white">
+                Login/Sign Up
+            </button>
+        </a>
+        <button class="bg-transparent p-0 m-0 border-none sm:hidden" id="mobile-menu-btn">
+            <div class="gh-burger-box text-black">
+                <div class="gh-burger-inner"></div>
+            </div>
+        </button>
+    </nav>
+</header>

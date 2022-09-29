@@ -1,0 +1,68 @@
+{{!--
+Re-usable card for linking to posts
+--}}
+
+<article class="mb-8 {{post_class}}">
+    <div class="w-full flex flex-wrap justify-between group">
+        <a href="{{url}}" class="w-full md:w-[300px]">
+            {{#if feature_image}}
+                <div class="w-full md:w-[300px] h-[180px]">
+                    <img class="w-full h-[180px] object-cover block"
+                    srcset="{{img_url feature_image size="s"}} 300w,
+                            {{img_url feature_image size="m"}} 600w,
+                            {{img_url feature_image size="l"}} 1000w,
+                            {{img_url feature_image size="xl"}} 2000w"
+                    sizes="(max-width: 1000px) 400px, 700px"
+                    src="{{img_url feature_image size="m"}}"
+                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                />
+                </div>
+            {{/if}}
+        </a>
+        
+        <div class="w-full md:w-[calc(100%-332px)] mt-3 md:mt-0">
+            <a href="{{url}}">
+                <h2 class="text-3xl font-bold mb-2 my-2 group-hover:text-black/80">{{title}}</h2>
+            </a>
+            <div class="flex flex-wrap items-center">
+                <span class="flex mr-4 items-center mb-3">
+                    {{#if primary_author}}
+                        <a class="flex items-center text-sm" href="/author/{{primary_author.slug}}">
+                            {{#if primary_author.profile_image}}
+                                <img
+                                    class="rounded-full h-6 w-6 object-cover block mr-3"
+                                    src={{img_url primary_author.profile_image size="xs"}}
+                                    alt="{{primary_author.name}}"
+                                />
+                                {{else}}
+                                <img
+                                    class="p-2 rounded bg-gray-100 h-8 block mr-3"
+                                    src={{asset "img/user.svg"}}
+                                    alt="user"
+                                />
+                            {{/if}}
+                            <span>{{primary_author.name}}</span>
+                        </a>
+                    {{/if}}
+                </span>
+                <span class="text-sm uppercase text-black/60 flex items-center mr-4 mb-3">
+                    <img src="{{asset "img/clock.svg"}}" alt="clock" class="h-4 w-auto mr-1">
+                    <time datetime="{{date timeago="true"}}">{{date timeago="true"}}</time> 
+                </span>
+                {{#if primary_tag}}
+                    <a href="{{primary_tag.url}}">
+                        <span class="text-sm text-white uppercase mr-2 mb-3 inline-block p-1 rounded-sm" 
+                            style="background-color: {{#if primary_tag.accent_color}}
+                                    {{primary_tag.accent_color}}
+                                {{else}}
+                                    '#000000'
+                                {{/if}};"
+                            >
+                            {{primary_tag.name}}
+                        </span>
+                    </a>
+                {{/if}}
+            </div>
+        </div>
+    </div>
+</article>

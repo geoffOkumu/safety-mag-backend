@@ -1,0 +1,36 @@
+<section class="bg-gray-200 py-4">
+    <div class="container">
+        <div class="w-full flex justify-between">
+            <h3 class="text-sm text-black/70 uppercase">Featured</h3>
+            <div class="flex items-center">
+                <button class="p-1 bg-transparent border-none mr-2 hover:ring" id="featured-btn-prev">
+                    {{> "icons/arrow-left" className="h-3 w-auto"}}
+                </button>
+                <button class="p-1 bg-transparent border-none hover:ring" id="featured-btn-next">
+                    {{> "icons/arrow-right" className="h-3 w-auto"}}
+                </button>
+            </div>
+        </div>
+        <div class="w-full mt-4 keen-slider" id="featured-slider">
+            {{#get "posts" limit="5" filter="featured:true" include="tags"}}
+                {{#foreach posts}}
+                 <div class="keen-slider__slide number-slide{{@number}} w-full flex items-center justify-between">
+                    <img 
+                        src="{{img_url feature_image size='m'}}" 
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        class="w-[80px] h-[80px] rounded-full object-cover"
+                    >
+                    <div class="w-[calc(100%-96px)]">
+                        <span class="mb-1 font-medium text-black/80 text-xs uppercase">
+                            <a href="{{primary_tag.url}}">{{primary_tag.name}}</a>
+                        </span>
+                        <a href="{{url}}">
+                            <h3 class="font-bold text-black hover:text-black/80">{{title}}</h3>
+                        </a>
+                    </div>
+                 </div>
+                {{/foreach}}
+			{{/get}}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,44 @@
+<section class="bg-gray-200 py-10">
+    <div class="container w-full flex justify-between flex-wrap items-center">
+        <div class="w-full md:w-[60%]">
+            <h3 class="text-sm text-black/70 uppercase">Safety Outlook</h3>
+            <h2 class="text-4xl font-bold font-sans block mt-8 mb-6">Safety Data
+                and Inteligence</h2>
+            <p class="text-black/90 max-w-[720px] mb-4">A quick snapshot on all
+                the important developments in the safety industry in Africa.
+                Discover important data and analytics, news, research and jobs.</p>
+
+            <span class="block text-sm uppercase text-black/70">Latest Data</span>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                <div class="p-4 bg-white">
+                    <span class="text-green-600 text-4xl font-sans mb-6 block">0</span>
+                    <div class="flex w-full justify-between items-center">
+                        <span class="uppercase">Jobs</span>
+                        {{> "icons/arrow-up-right"}}
+                    </div>
+                </div>
+                <div class="p-4 bg-white">
+                    <span class="text-green-600 text-4xl font-sans mb-6 block">0</span>
+                    <div class="flex w-full justify-between items-center">
+                        <span class="uppercase">Research Papers</span>
+                        {{> "icons/arrow-up-right"}}
+                    </div>
+                </div>
+                <div class="p-4 bg-white">
+                    <span class="text-green-600 text-4xl font-sans mb-6 block">0</span>
+                    <div class="flex w-full justify-between items-center">
+                        <span class="uppercase">Events</span>
+                        {{> "icons/arrow-up-right"}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="w-full md:w-[36%]">
+            <img
+                class="w-full h-auto"
+                src="{{asset 'img/Segmentation-cuate.svg'}}"
+                alt="data"
+            />
+        </div>
+    </div>
+</section>
