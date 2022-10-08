@@ -1,0 +1,31 @@
+{{!< default}} <section class="py-8 bg-gray-200 mb-4">
+    <div class="container">
+        <h2 class="text-4xl font-serif">All Columns</h2>
+    </div>
+    </section>
+    <div class="container flex flex-wrap justify-between">
+
+        <div class="w-full md:w-[72%]">
+            {{#get "authors" limit="10"}}
+            {{#foreach authors}}
+            <a class="flex items-center py-2 px-2 text-sm hover:bg-gray-100 rounded mb-4" href="/author/{{slug}}">
+                {{#if profile_image}}
+                <img class="rounded h-24 w-24 object-cover block mr-3" src={{img_url profile_image size="xs" }}
+                    alt="{{name}}" />
+                {{else}}
+                <img class="p-4 rounded bg-gray-100 h-20 block mr-3" src={{asset "img/user.svg" }} alt="user" />
+                {{/if}}
+                <div>
+                    <h3 class="text-xl font-bold mb-3">{{name}}</h3>
+                    <p class="text-sm text-gray-600">{{bio}}</p>
+                </div>
+            </a>
+            {{/foreach}}
+            {{/get}}
+        </div>
+        <div class="w-full md:w-[25%]">
+            {{> "home/subscribe"}}
+            {{> "home/social-links"}}
+        </div>
+
+    </div>
